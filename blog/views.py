@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView
-from django.views.generic.dates import ArcheiveIndexView, TodayArchiveView
+from django.views.generic.dates import ArchiveIndexView, TodayArchiveView
 
 from blog.models import Board
 # Create your views here.
@@ -13,20 +13,20 @@ class BoardLV(ListView):
 class BoardDV(DetailView):
     model = Board
 
-class BoardAV(ArcheiveIndexView):
+class BoardAV(ArchiveIndexView):
     model = Board
     date_field = 'mod_date'
 
-class BoardYAV(ArcheiveIndexView):
+class BoardYAV(ArchiveIndexView):
     model = Board
     date_field = 'mod_date'
     make_object_list = True
 
-class BoardMAV(ArcheiveIndexView):
+class BoardMAV(ArchiveIndexView):
     model = Board
     date_field = 'mod_date'
 
-class BoardDAV(ArcheiveIndexView):
+class BoardDAV(ArchiveIndexView):
     model = Board
     date_field = 'mod_date'
 
