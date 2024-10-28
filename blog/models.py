@@ -7,14 +7,14 @@ class Board(models.Model):
     # author = models.ForeignKey('auth.User',on_delete=models.CASCADE)
 
     title = models.CharField(verbose_name='TITLE',max_length=100)
-    contents = models.TextField('CONTENT',default='')
+    content = models.TextField('CONTENT',default='')
     pub_date = models.DateTimeField('PUBLISH DATE',default = timezone.now)
-    mod_date = models.DateTimeField('MODIFY DATE',auto_now=true)
+    mod_date = models.DateTimeField('MODIFY DATE',auto_now = True)
 
     class Meta:
         verbose_name='Board'
         verbose_name_plural='Boards'
-        db_table='blogs_Boards'
+        db_table='blog_Boards'
         ordering=('-mod_date',)
 
     def __str__(self):
