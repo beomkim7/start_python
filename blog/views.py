@@ -5,6 +5,7 @@ from django.views.generic.dates import ArchiveIndexView, TodayArchiveView
 from blog.models import Board
 # Create your views here.
 
+
 class BoardLV(ListView):
     model = Board
     context_object_name = 'boards'
