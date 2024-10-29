@@ -23,8 +23,8 @@ class Board(models.Model):
     def get_absolute_url(self):
         return reverse('blog:board_detail',args=(self.id,))
     
-    def get_privious(self):
-        return self.get_previous_by_mod_date()
-    
+    def get_previous(self):
+        return Board.objects.filter(id__lt=self.id).order_by('-id').first()
+
     def get_next(self):
-        return self.get_next_by_mod_date()
+        return Board.objects.filter(id__gt=self.id).order_by('id').first()

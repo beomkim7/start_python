@@ -9,3 +9,4 @@ class BoardAdmin(admin.ModelAdmin):
     list_display = ('id','title','mod_date')
     list_filter=('mod_date',)
     search_fields=('title','content')
+    ordering = ('-mod_date',)
