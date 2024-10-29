@@ -24,7 +24,7 @@ class Board(models.Model):
         return reverse('blog:board_detail',args=(self.id,))
     
     def get_privious(self):
-        return self.get_previous_mod_date()
+        return self.get_previous_by_mod_date()
     
     def get_next(self):
-        return self.get_next_mod_date()
+        return self.get_next_by_mod_date()
