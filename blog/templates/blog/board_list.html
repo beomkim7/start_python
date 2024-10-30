@@ -1,26 +1,13 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="utf-8">
-    <title>Beom's Board</title>
-    <!-- 부트스트랩 CSS 추가 -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-</head>
-
-<body class="bg-light">
+{% extends "common/base.html" %}
+    {% block content %}
     <div class="container my-5">
         <h2 class="text-center mb-4">Beom's Board</h2>
-
-        <!-- 아카이브 링크 -->
-        <div class="text-right mb-3">
-            <a href="{% url 'blog:board_archive' %}" class="btn btn-primary">아카이브</a>
-        </div>
 
         <!-- 게시글 목록 테이블 -->
         <table class="table table-hover table-bordered">
             <thead class="thead-dark">
                 <tr>
-                    <th scope="col">#</th>
+                    <th scope="col">번호</th>
                     <th scope="col">제목</th>
                     <th scope="col">작성자</th>
                     <th scope="col">작성 날짜</th>
@@ -30,11 +17,11 @@
             <tbody>
                 {% for board in boards %}
                     <tr>
-                        <th scope="row">{{ forloop.counter }}</th>
+                        <th scope="row">{{ board.pk }}</th>
                         <td><a href="{{ board.get_absolute_url }}">{{ board.title }}</a></td>
                         <td>{{ board.author }}</td>
                         <td>{{ board.mod_date|date:"Y-m-d" }}</td>
-                        <td>{{ board.views }}</td>
+                        <td>{{ board.hits }}</td>
                     </tr>
                 {% empty %}
                     <tr>
@@ -69,9 +56,4 @@
             </ul>
         </nav>
     </div>
-
-    <!-- 부트스트랩 JS 및 jQuery 추가 -->
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+{% endblock %}
