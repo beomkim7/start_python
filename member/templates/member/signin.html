@@ -1,1 +1,27 @@
-{% include "common/base.html" %}
+{% extends "common/base.html" %}
+
+{% block content %}
+    <div class="container mt-5">
+        <h2>로그인</h2>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ form.username.label }}
+                <input type="text" name="username" class="form-control" id="id_username" required>
+            </div>
+            <div class="form-group">
+                {{ form.password.label }}
+                <input type="password" name="password" class="form-control" id="id_password" required>
+            </div>
+            <button type="submit" class="btn btn-primary">로그인</button>
+        </form>
+
+        {% if messages %}
+            <div class="alert alert-info">
+                {% for message in messages %}
+                    <div class="alert alert-danger">{{ message }}</div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}
