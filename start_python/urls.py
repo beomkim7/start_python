@@ -21,6 +21,6 @@ from board import views
 urlpatterns = [    
     path('admin/', admin.site.urls),
     path('board/',include('board.urls')),
-    path('member/',include('member.urls'))
+    path('member/',include('member.urls')),
     path('', views.BoardLV.as_view(),name='board_list'),  # common 앱의 URL 포함
 ]
