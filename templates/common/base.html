@@ -18,17 +18,37 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'board:board_list' %}">게시판</a>
                 </li>
+                {% if user.is_authenticated %}
                 <li class="nav-item">
-                    <a class="nav-link" href="#">로그인</a>
+                    <a class="nav-link" href="{% url 'member:signout' %}">로그아웃</a>
                 </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'member:signin' %}">로그인</a>
+                </li>
+
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'member:signup' %}">회원가입</a>
-                </li>
+                </li>                
+                {% endif %}
             </ul>
         </div>
     </nav>
 
     {% block content %}{% endblock %}
 
+    {% if messages %}
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                {% for message in messages %}
+                    alert("{{ message }}");
+                {% endfor %}
+            });
+        </script>
+    {% endif %}
+
 </body>
+
+
+
 </html>
