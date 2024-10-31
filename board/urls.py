@@ -1,7 +1,7 @@
 from django.urls import path
-from blog import views
+from board import views
 
-app_name = 'blog'
+app_name = 'board'
 
 urlpatterns = [
     path('',views.BoardLV.as_view(),name = 'index'),

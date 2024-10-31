@@ -3,19 +3,19 @@ from django.views.generic import ListView, DetailView,UpdateView,DeleteView
 from django.views.generic.dates import ArchiveIndexView, TodayArchiveView
 
 from .forms import BoardForm
-from blog.models import Board
+from board.models import Board
 # Create your views here.
 
 class BoardDel(DeleteView):
     def post(self,request,pk):
         board = get_object_or_404(Board,pk=pk)
         board.soft_del()
-        return redirect('blog:index')
+        return redirect('board:index')
 
 class BoardEdit(UpdateView):
     model = Board
     form_class = BoardForm
-    template_name = 'blog/board_edit.html'
+    template_name = 'board/board_edit.html'
 
     def form_valid(self, form):    
         return super().form_valid(form)

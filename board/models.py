@@ -21,14 +21,14 @@ class Board(models.Model):
     class Meta:
         verbose_name='Board'
         verbose_name_plural='Boards'
-        db_table='blog_Boards'
+        db_table='board_Boards'
         ordering=('-id',)
 
     def __str__(self):
         return self.title
 
     def get_absolute_url(self):
-        return reverse('blog:board_detail',args=(self.id,))
+        return reverse('board:board_detail',args=(self.id,))
     
     def get_previous(self):
         return Board.objects.filter(id__lt=self.id,enable=False).order_by('pk').last()

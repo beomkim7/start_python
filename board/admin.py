@@ -1,5 +1,5 @@
 from django.contrib import admin
-from blog.models import Board
+from board.models import Board
 
 # Register your models here.
 
